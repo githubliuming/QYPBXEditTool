@@ -1,0 +1,46 @@
+
+{
+    "Library":
+    {
+        "system":["libsqlite3.tbd","libc++.tbd","libz.tbd","libresolv.tbd"],
+        "third":[]
+    },
+    "framework":
+    {
+        "system":["CoreImage.framework","CoreServices.framework","GLKit.framework","Photos.framework,ImageIO.framework"],
+        "third":[]
+    },
+    "buildSetting":
+    {
+    
+    },
+    "plistInfo":
+    {
+          "mdfy":
+          {
+            "CFBundleShortVersionString":"3.0.0",
+            "CFBundleInfoDictionaryVersion":"6.0",
+            "CFBundleVersion":"10086"
+          },
+          "add":
+            {
+                "NSCameraUsageDescription":"我们需要访问相机为你生成形象",
+                "NSMicrophoneUsageDescription":"我们需要使用你的麦克风以让你和朋友聊天",
+                "CFBundleURLTypes" : 
+                [
+                    {
+                        "CFBundleURLName":"QQ",
+                        "CFBundleTypeRole":"Editor",
+                        "CFBundleURLSchemes":["tencent1105791370","QQ41E9098A"]
+                    },
+                    {
+                        "CFBundleURLName":"sinaWeibo",
+                        "CFBundleTypeRole":"Editor",
+                        "CFBundleURLSchemes":["wb1374044879"]
+                    }
+                ],
+                "MOBAppkey":"295dafc397e5f",
+                "MOBAppSecret":"ef780efd532820c7d0ff20117e540ed4"
+            }
+    }
+  }
