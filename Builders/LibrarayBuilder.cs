@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.iOS.Xcode;
+using UnityEngine;
 
 namespace QYPBXEditTool
 {
@@ -19,16 +20,53 @@ namespace QYPBXEditTool
         {
             this.proj = project;
             this.target = target;
+            
+            m_librarys.ForEach(o =>
+            {
+                //添加library
+                BuilderSysLibrary(o.GetSysLibs());
+                BuilderThirdLibrary(o.GetThirdLibs());
+                //添加 framework
+                BuilderSysFramework(o.GetSysFramework());
+                BuilderThirdFramework(o.GetThirdFrameWork());
+            });
+            
+            
         }
 
-        public void BuilderLibrary(Hashtable data)
+        public void BuilderSysLibrary(ArrayList data)
+        {
+            foreach (var o in data)
+            {
+                Debug.LogFormat("library = {0}",o.ToString());
+                AddLibrary(o.ToString());
+            }
+        }
+        
+
+        public void BuilderThirdLibrary(ArrayList data)
         {
             
         }
 
-        public void BuilderFramework(Hashtable data)
+        public void BuilderSysFramework(ArrayList data)
+        {
+            foreach (var o in data)
+            {
+                this.proj.AddFrameworkToProject(this.target,o.ToString(),true);
+            }
+        }
+
+        public void BuilderThirdFramework(ArrayList data)
         {
             
+        }
+
+        private void AddLibrary(string libName)
+        {
+            
+            string fileGuid = this.proj.AddFile("usr/lib/" + libName, "Frameworks/" + libName, PBXSourceTree.Sdk);
+            this.proj.AddFileToBuild(this.target, fileGuid);
         }
     }
 }

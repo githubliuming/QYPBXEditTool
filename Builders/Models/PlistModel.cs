@@ -12,12 +12,11 @@ namespace QYPBXEditTool
         {
             this.plistModel = data;
         }
-
         public Hashtable GetAddData()
         {
             return plistModel[PLISTINFO_ADD_KEY] as Hashtable;
         }
-
+        
         public Hashtable GetMdfyData()
         {
             return plistModel[PLISTINFO_MDFY_KEY] as Hashtable;

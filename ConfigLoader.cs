@@ -12,7 +12,7 @@ namespace QYPBXEditTool
         #region 配置key
 
         private const string PLISTINFO_ROOT_KEY = "plistInfo";
-        private const string LIBRARY_ROOT_KEY = "framework";
+        private const string LIBRARY_ROOT_KEY = "Library";
         private const string FRAMEWORK_ROOT_KEY = "framework";
         private const string BUILDSETTING_ROOT_KEY = "buildSetting";
         
