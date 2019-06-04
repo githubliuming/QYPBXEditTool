@@ -125,12 +125,13 @@ namespace QYPBXEditTool
                         }
                         case "wallet":
                         {
+                            wallet(data);
                             break;
                         }
                     }
                 }
             }
-        }
+        }                                                                                                                                                                     
         public void wallet(Hashtable data)
         {
             if (IsOpen(data))
