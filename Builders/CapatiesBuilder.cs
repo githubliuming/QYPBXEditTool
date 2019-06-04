@@ -21,13 +21,13 @@ namespace QYPBXEditTool
             {
                 if (CapabilityManager == null)
                 {
-                   this.CapabilityManager = new ProjectCapabilityManager(projPath,
-                       o["entitlementFilePath"].ToString(),
-                       PBXProject.GetUnityTargetName());
+                    this.CapabilityManager = new ProjectCapabilityManager(projPath,
+                        o["entitlementFilePath"].ToString(),
+                        PBXProject.GetUnityTargetName());
                 }
-                
+
             });
-           
+
         }
 
         public void paraseAndBuilder(Hashtable data)
@@ -108,8 +108,55 @@ namespace QYPBXEditTool
                             Maps(data);
                             break;
                         }
+                        case "PersonalVPN":
+                        {
+                            PersonalVPN(data);
+                            break;
+                        }
+                        case "PushNotifications":
+                        {
+                            PushNotifications(data);
+                            break;             
+                        }
+                        case "Siri":
+                        {
+                            Siri(data);
+                            break;
+                        }
+                        case "wallet":
+                        {
+                            break;
+                        }
                     }
                 }
+            }
+        }
+        public void wallet(Hashtable data)
+        {
+            if (IsOpen(data))
+            {
+                this.CapabilityManager.AddWallet(data["passSubset"] as string[]);
+            }
+        }
+        public void Siri(Hashtable data)
+        {
+            if (IsOpen(data))
+            {
+                this.CapabilityManager.AddSiri();
+            }
+        }
+        public void PushNotifications(Hashtable data)
+        {
+            if (IsOpen(data))
+            {
+                this.CapabilityManager.AddPushNotifications(true);
+            }
+        }
+        public void PersonalVPN(Hashtable data)
+        {
+            if (IsOpen(data))
+            {
+                this.CapabilityManager.AddPersonalVPN();
             }
         }
 
@@ -150,8 +197,8 @@ namespace QYPBXEditTool
         {
             if (IsOpen(data))
             {
-                if (data["enableKeyValueStorage"] is bool enableKeyValueStorage && 
-                    data["enableiCloudDocument"] is  bool enableiCloudDocument)
+                if (data["enableKeyValueStorage"] is bool enableKeyValueStorage &&
+                    data["enableiCloudDocument"] is bool enableiCloudDocument)
                 {
                     this.CapabilityManager.AddiCloud(
                         enableKeyValueStorage,
@@ -161,7 +208,6 @@ namespace QYPBXEditTool
                 }
             }
         }
-
         public void HomeKit(Hashtable data)
         {
             if (IsOpen(data))
@@ -206,7 +252,7 @@ namespace QYPBXEditTool
         {
             if (IsOpen(data))
             {
-                this.CapabilityManager.AddAssociatedDomains(data["domains"] as  string[]);
+                this.CapabilityManager.AddAssociatedDomains(data["domains"] as string[]);
             }
         }
 
@@ -240,24 +286,24 @@ namespace QYPBXEditTool
             {
                 return isOpen;
             }
-            
+
             return false;
         }
 
         private BackgroundModesOptions GetOptions(Int32 key)
         {
-            Dictionary<Int32,BackgroundModesOptions> dictionary = new Dictionary<int, BackgroundModesOptions>
+            Dictionary<Int32, BackgroundModesOptions> dictionary = new Dictionary<int, BackgroundModesOptions>
             {
-               [0] = BackgroundModesOptions.None,
-               [1] = BackgroundModesOptions.AudioAirplayPiP,
-               [2] = BackgroundModesOptions.LocationUpdates,
-               [4] = BackgroundModesOptions.VoiceOverIP,
-               [8] = BackgroundModesOptions.NewsstandDownloads,
-               [16] = BackgroundModesOptions.ExternalAccessoryCommunication,
-               [32] = BackgroundModesOptions.UsesBluetoothLEAccessory,
-               [64] = BackgroundModesOptions.ActsAsABluetoothLEAccessory,
-               [128] = BackgroundModesOptions.BackgroundFetch,
-               [256] = BackgroundModesOptions.RemoteNotifications,
+                [0] = BackgroundModesOptions.None,
+                [1] = BackgroundModesOptions.AudioAirplayPiP,
+                [2] = BackgroundModesOptions.LocationUpdates,
+                [4] = BackgroundModesOptions.VoiceOverIP,
+                [8] = BackgroundModesOptions.NewsstandDownloads,
+                [16] = BackgroundModesOptions.ExternalAccessoryCommunication,
+                [32] = BackgroundModesOptions.UsesBluetoothLEAccessory,
+                [64] = BackgroundModesOptions.ActsAsABluetoothLEAccessory,
+                [128] = BackgroundModesOptions.BackgroundFetch,
+                [256] = BackgroundModesOptions.RemoteNotifications,
             };
             return dictionary[key];
         }
@@ -265,7 +311,7 @@ namespace QYPBXEditTool
         private MapsOptions GetMapsOptions(Int32 key)
         {
 
-            Dictionary<Int32,MapsOptions> dictionary = new Dictionary<int, MapsOptions>
+            Dictionary<Int32, MapsOptions> dictionary = new Dictionary<int, MapsOptions>
             {
                 [0] = MapsOptions.None,
                 [1] = MapsOptions.Airplane,
