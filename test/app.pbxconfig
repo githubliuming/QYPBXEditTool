@@ -10,7 +10,8 @@
         "third":[]
     },
     "capabilities":
-    {
+    {   
+        "entitlementFilePath":"LiveAvatar.entitlements",
         "AccessWiFiInfomation":
         {
             "isOpen":false

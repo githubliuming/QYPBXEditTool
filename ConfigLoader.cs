@@ -16,6 +16,8 @@ namespace QYPBXEditTool
         private const string FRAMEWORK_ROOT_KEY = "framework";
         private const string BUILDSETTING_ROOT_KEY = "buildSetting";
         
+        private const string CAPABITIES_ROOT_KEY = "capabilities";
+        
         #endregion
 
         
@@ -25,7 +27,9 @@ namespace QYPBXEditTool
         public List<PlistModel>    plistModes  = new List<PlistModel>();
         public List<LibrarayModel> libModels = new List<LibrarayModel>();
         public List<BuildSetting>  settingModels = new List<BuildSetting>();
+        public List<Hashtable> capabilites = new List<Hashtable>();
 
+        public List<Hashtable> capabities;
         #endregion
         
         public void LoadConfig()
@@ -60,6 +64,7 @@ namespace QYPBXEditTool
                         dataSoure[FRAMEWORK_ROOT_KEY] as Hashtable
                     ));
                     this.settingModels.Add(new BuildSetting(dataSoure[BUILDSETTING_ROOT_KEY] as  Hashtable));
+                    this.capabities.Add(dataSoure[CAPABITIES_ROOT_KEY] as  Hashtable);
                     
 //                   
 //                    //获取 系统library
