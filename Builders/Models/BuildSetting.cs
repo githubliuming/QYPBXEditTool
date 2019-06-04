@@ -10,5 +10,16 @@ namespace QYPBXEditTool
         {
             this.buildModel = data;
         }
+
+        public Hashtable GetAddData()
+        {
+            return this.buildModel["add"] as Hashtable;
+        }
+
+        public Hashtable GetMdfyData()
+        {
+            return this.buildModel["mdfy"] as  Hashtable;
+        }
+
     }
 }

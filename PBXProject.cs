@@ -30,6 +30,8 @@ namespace QYPBXEditTool
            new PlistBuilder(loader.plistModes).Builder(targetPath);
            //添加library framework
            new LibrarayBuilder(loader.libModels).Builder(proj,targetId);
+           //buildSetting
+           new SettingBuilder(loader.settingModels).Builder(proj,targetId);
            
            proj.WriteToFile(path);
            
