@@ -6,7 +6,7 @@
     },
     "framework":
     {
-        "system":["CoreImage.framework","CoreServices.framework","GLKit.framework","Photos.framework,ImageIO.framework"],
+        "system":["CoreImage.framework","CoreServices.framework","GLKit.framework","Photos.framework","ImageIO.framework"],
         "third":[]
     },
     "capabilities":

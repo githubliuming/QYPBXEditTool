@@ -29,7 +29,7 @@ namespace QYPBXEditTool
         public List<BuildSetting>  settingModels = new List<BuildSetting>();
         public List<Hashtable> capabilites = new List<Hashtable>();
 
-        public List<Hashtable> capabities;
+        public List<Hashtable> capabities = new List<Hashtable>();
         #endregion
         
         public void LoadConfig()
