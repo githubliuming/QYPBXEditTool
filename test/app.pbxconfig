@@ -34,7 +34,7 @@
         },
         "BackgroundModes":
         {
-            "isOpen":false,
+            "isOpen":true,
             "options":256
         },
         "DataProtection":
@@ -84,7 +84,7 @@
         },
         "PushNotifications":
         {
-            "isOpen":false
+            "isOpen":true
         },
         "Siri":
         {
@@ -147,6 +147,13 @@
                     "CFBundleURLName":"sinaWeibo",
                     "CFBundleURLSchemes":["wb1374044879"]
                 }
+            ],
+            "LSApplicationQueriesSchemes":[
+                "mqq","mqqapi","mqqwpa","mqqbrowser","mttbrowser","mqqOpensdkSSoLogin","mqqopensdkapiV2","mqqopensdkapiV3","mqqopensdkapiV4","wtloginmqq2",
+                "mqzone","mqzoneopensdk","mqzoneopensdkapi","mqzoneopensdkapi19","mqzoneopensdkapiV2","mqqapiwallet","mqqopensdkfriend","mqqopensdkdataline",
+                "mqqgamebindinggroup","mqqopensdkgrouptribeshare","tencentapi.qq.reqContent","tencentapi.qzone.reqContent","tim","timapi","timopensdkfriend",
+                "timwpa","timgamebindinggroup","timapiwallet","timOpensdkSSoLogin","wtlogintim","timopensdkgrouptribeshare","timopensdkapiV4","timopensdkdataline",
+                "wtlogintimV1","timapiV1","sinaweibosso","weibo","weibosdk","weibosdk2.5","sinaweibo","sinaweibohd","weixin","wechat"
             ],
             "MOBAppkey":"295dafc397e5f",
             "MOBAppSecret":"ef780efd532820c7d0ff20117e540ed4"

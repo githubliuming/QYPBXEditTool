@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.iOS.Xcode;
+using UnityEngine;
 
 namespace QYPBXEditTool
 {
@@ -25,8 +26,11 @@ namespace QYPBXEditTool
                         o["entitlementFilePath"].ToString(),
                         PBXProject.GetUnityTargetName());
                 }
+                paraseAndBuilder(o);
 
             });
+            
+            this.CapabilityManager.WriteToFile();
 
         }
 
@@ -34,98 +38,99 @@ namespace QYPBXEditTool
         {
             foreach (DictionaryEntry o in data)
             {
+                Debug.LogFormat("run key = {0}",o.Key.ToString());
                 if (!o.Key.Equals("entitlementFilePath"))
                 {
                     switch (o.Key.ToString())
                     {
                         case "AccessWiFiInfomation":
                         {
-                            AccessWiFiInfomation(data);
+                            AccessWiFiInfomation(data["AccessWiFiInfomation"] as Hashtable);
                             break;
                         }
                         case "AppGroups":
                         {
-                            AppGroups(data);
+                            AppGroups(data["AppGroups"] as Hashtable);
                             break;
                         }
                         case "ApplePay":
                         {
-                            ApplePay(data);
+                            ApplePay(data["ApplePay"] as Hashtable);
                             break;
                         }
                         case "AssociatedDomains":
                         {
-                            AssociatedDomains(data);
+                            AssociatedDomains(data["AssociatedDomains"] as Hashtable);
                             break;
                         }
                         case "BackgroundModes":
                         {
-                            BackgroundModes(data);
+                            BackgroundModes(data["AssociatedDomains"] as Hashtable);
                             break;
                         }
                         case "DataProtection":
                         {
-                            DataProtection(data);
+                            DataProtection(data["DataProtection"] as Hashtable);
                             break;
                         }
                         case "GameCenter":
                         {
-                            GameCenter(data);
+                            GameCenter(data["GameCenter"] as Hashtable);
                             break;
                         }
                         case "HealthKit":
                         {
-                            HealthKit(data);
+                            HealthKit(data["HealthKit"] as Hashtable);
                             break;
                         }
                         case "HomeKit":
                         {
-                            HomeKit(data);
+                            HomeKit(data["HomeKit"] as Hashtable);
                             break;
                         }
                         case "iColoud":
                         {
-                            iColoud(data);
+                            iColoud(data["iColoud"] as Hashtable);
                             break;
                         }
                         case "InAppPurchase":
                         {
-                            InAppPurchase(data);
+                            InAppPurchase(data["InAppPurchase"] as Hashtable);
                             break;
                         }
                         case "InterAppAudio":
                         {
-                            InterAppAudio(data);
+                            InterAppAudio(data["InterAppAudio"] as Hashtable);
                             break;
                         }
                         case "keychainSharing":
                         {
-                            keychainSharing(data);
+                            keychainSharing(data["keychainSharing"] as Hashtable);
                             break;
                         }
                         case "Maps":
                         {
-                            Maps(data);
+                            Maps(data["Maps"] as Hashtable);
                             break;
                         }
                         case "PersonalVPN":
                         {
-                            PersonalVPN(data);
+                            PersonalVPN(data["PersonalVPN"] as Hashtable);
                             break;
                         }
                         case "PushNotifications":
                         {
-                            PushNotifications(data);
+                            PushNotifications(data["PushNotifications"] as Hashtable);
                             break;             
                         }
                         case "Siri":
                         {
-                            Siri(data);
+                            Siri(data["Siri"] as Hashtable);
                             break;
                         }
                         case "wallet":
                         {
-                            wallet(data);
+                            wallet(data["wallet"] as Hashtable);
                             break;
                         }
                     }
@@ -148,6 +153,8 @@ namespace QYPBXEditTool
         }
         public void PushNotifications(Hashtable data)
         {
+            Debug.LogFormat("is open = {0}",IsOpen(data));
+            Debug.LogFormat("data = {0}",data.toJson());
             if (IsOpen(data))
             {
                 this.CapabilityManager.AddPushNotifications(true);

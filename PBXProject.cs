@@ -35,6 +35,10 @@ namespace QYPBXEditTool
            
            proj.WriteToFile(path);
            
+           new  CapatiesBuilder(loader.capabities).Builder(path);
+           
+           
+           
            Debug.Log("end mdfy project");
         }
     }
